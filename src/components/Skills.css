@@ -1,0 +1,64 @@
+.skillB{
+    background-color: rgb(80, 80, 253);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 55px;
+    margin-left: 70px;
+    margin-right: 70px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+    
+}
+.font{
+    margin-top: -15px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.skillB div:hover {
+  transform: scale(1.07);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  color: rgb(80, 80, 253);
+}
+.skillB div {
+    background-color: white;
+    color: grey;
+    width: 120px;
+    height: 50px;
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-left: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 7px;
+}
+.skillW{
+    text-align: center;
+    
+}
+.icon {
+    margin-top: 2px;
+  font-size: 26px;
+  margin-bottom: 5px;
+  margin-right: 3px;
+}
+.icon:hover{
+    color: rgb(80, 80, 253);
+}
+.btn{
+    text-align: center;
+    background-color: rgb(80,80,253);
+    height: 35px;
+    width: 120px;
+    margin-top: 40px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    box-shadow: 0 2px 8px rgb(163, 163, 163);
+}
+.btn:hover{
+    transform: scale(1.07);
+}
