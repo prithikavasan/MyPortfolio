@@ -15,7 +15,7 @@ const Skills = () => {
         <div className="s1"><SiExpress className="icon express" /> Express JS</div>
         <div className="s1"><SiMongodb className="icon mongo" /> MongoDB</div>
         <div className="s1"><FaNodeJs className="icon node" /> Node JS</div>
-        <div className="s1"><SiC className="icon c" /> C</div>
+        <div className="s1"><SiC className="icon c" /> </div>
         <div className="s1"><FaJava className="icon java" /> JAVA</div>
         <div className="s1"><FaDatabase className="icon sql" /> MySQL</div>
       </div>
