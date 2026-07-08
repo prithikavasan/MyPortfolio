@@ -1,25 +1,74 @@
 import React from "react";
 import "./Skills.css";
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaDatabase } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaJava, FaDatabase, FaArrowRight } from "react-icons/fa";
 import { SiExpress, SiMongodb, SiC } from "react-icons/si";
+import ScrollReveal from "./ScrollReveal";
 
 const Skills = () => {
+  const skillCategories = [
+    {
+      title: "Frontend Development",
+      skills: [
+        { name: "HTML5", icon: <FaHtml5 className="skill-icon html" /> },
+        { name: "CSS3", icon: <FaCss3Alt className="skill-icon css" /> },
+        { name: "JavaScript", icon: <FaJs className="skill-icon js" /> },
+        { name: "React JS", icon: <FaReact className="skill-icon react" /> },
+      ]
+    },
+    {
+      title: "Backend & Databases",
+      skills: [
+        { name: "Node JS", icon: <FaNodeJs className="skill-icon node" /> },
+        { name: "Express JS", icon: <SiExpress className="skill-icon express" /> },
+        { name: "MongoDB", icon: <SiMongodb className="skill-icon mongo" /> },
+        { name: "MySQL", icon: <FaDatabase className="skill-icon sql" /> },
+      ]
+    },
+    {
+      title: "Programming Languages",
+      skills: [
+        { name: "C", icon: <SiC className="skill-icon c-lang" /> },
+        { name: "Java", icon: <FaJava className="skill-icon java" /> },
+      ]
+    }
+  ];
+
   return (
-    <section id="skills" className="skillW"> {/* add id="skills" */}
-      <h1 className="font">Skills</h1>
-      <div className="skillB">
-        <div className="s1"><FaHtml5 className="icon html" /> HTML</div>
-        <div className="s1"><FaCss3Alt className="icon css" /> CSS</div>
-        <div className="s1"><FaJs className="icon js" /> JavaScript</div>
-        <div className="s1"><FaReact className="icon react" /> React JS</div>
-        <div className="s1"><SiExpress className="icon express" /> Express JS</div>
-        <div className="s1"><SiMongodb className="icon mongo" /> MongoDB</div>
-        <div className="s1"><FaNodeJs className="icon node" /> Node JS</div>
-        <div className="s1"><SiC className="icon c" /> </div>
-        <div className="s1"><FaJava className="icon java" /> JAVA</div>
-        <div className="s1"><FaDatabase className="icon sql" /> MySQL</div>
+    <section id="skills" className="skills-section">
+      <ScrollReveal>
+        <h1 className="skills-title">My Skills</h1>
+        <p className="skills-subtitle">Technologies and tools I specialize in to build applications</p>
+      </ScrollReveal>
+
+      <div className="skills-categories-grid">
+        {skillCategories.map((category, catIndex) => (
+          <ScrollReveal key={category.title} delay={catIndex * 150}>
+            <div className="skills-category-card">
+              <h3>{category.title}</h3>
+              <div className="skills-chips-container">
+                {category.skills.map((skill) => (
+                  <div key={skill.name} className="skill-chip">
+                    {skill.icon}
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
+        ))}
       </div>
-      <button className="btn" onClick={() => window.open("/Prithika-Sri_Resume.pdf", "_blank")}>Here is my CV</button>
+
+      <ScrollReveal delay={300}>
+        <div className="cv-button-container">
+          <button 
+            className="cv-btn" 
+            onClick={() => window.open("/Prithika-Sri_Resume.pdf", "_blank")}
+          >
+            <span>View Resume / CV</span>
+            <FaArrowRight className="cv-btn-icon" />
+          </button>
+        </div>
+      </ScrollReveal>
     </section>
   );
 };

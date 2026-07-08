@@ -1,69 +1,284 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.main {
-  height: 100px;
-  background: linear-gradient(90deg, rgb(221, 239, 253), rgb(228, 236, 243), rgb(221, 239, 253));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 60px;
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-}
-.name {
-  color: rgb(80, 80, 253);
-}
-
-.name h2 {
-  font-size: 30px;
-  font-weight: bolder;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 70px;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--navbar-border);
+  z-index: 999;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
-/* ====== Navbar Links ====== */
-.links ul {
+.nav-container {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   align-items: center;
-  gap: 50px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-logo {
+  cursor: pointer;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   list-style: none;
 }
 
-.links ul li {
-  font-size: 17px;
-}
-
-.links a {
+.nav-item {
   text-decoration: none;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: rgb(81, 81, 84);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
-  gap: 8px; /* space between icon and text */
-  transition: all 0.3s ease;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: var(--transition-fast);
 }
 
-/* Hover Effect */
-.links a:hover {
-  font-size: 19px;
-  color: rgb(80, 80, 253);
-  transform: scale(1.05);
+.nav-link-icon {
+  font-size: 14px;
 }
 
-/* ====== Icons ====== */
-.icon {
+.nav-item:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.nav-item.active {
+  color: var(--accent-color);
+  background-color: var(--icon-bg);
+  font-weight: 600;
+}
+
+/* Actions styling */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Theme Switcher */
+.theme-switcher-container {
+  position: relative;
+}
+
+.theme-toggle-btn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  border-color: var(--text-muted);
+  transform: translateY(-1px);
+}
+
+.theme-btn-text {
+  font-size: 13px;
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 140px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  list-style: none;
+  padding: 6px;
+  z-index: 1001;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-dropdown-item {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.theme-dropdown-item:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.theme-dropdown-item.active {
+  background: var(--icon-bg);
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+/* Resume Navigation Button */
+.resume-nav-btn {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 10px var(--accent-glow);
+}
+
+.resume-nav-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px var(--glow-color);
+}
+
+/* Mobile Toggle */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
   font-size: 20px;
-  color: rgb(81, 81, 84);
-  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
-.links a:hover .icon {
-  color: rgb(80, 80, 253);
+/* Mobile Drawer */
+.mobile-menu-drawer {
+  display: none;
 }
 
+/* Responsive navbar adjustments */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .theme-btn-text {
+    display: none; /* Only show icon on tablet/mobile to save space */
+  }
+
+  .theme-toggle-btn {
+    padding: 8px;
+  }
+  
+  /* Mobile menu drawer setup */
+  .mobile-menu-drawer {
+    display: block;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--navbar-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+    z-index: 998;
+  }
+
+  .mobile-menu-drawer.open {
+    max-height: 400px;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .mobile-nav-item {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  .mobile-nav-item:hover, .mobile-nav-item.active {
+    background: var(--bg-tertiary);
+    color: var(--accent-color);
+  }
+
+  .mobile-resume-li {
+    margin-top: 8px;
+  }
+
+  .mobile-resume-btn {
+    width: 100%;
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+  }
+}

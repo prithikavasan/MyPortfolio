@@ -7,21 +7,21 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <h3>Prithika Sri</h3>
-        <p>Building my skills and sharing my projects online.</p>
-        <div className="social-icons">
-          <a href="https://www.linkedin.com/in/prithika-sri-672b58292/" target="_blank" rel="noreferrer">
+        <p>Information Technology Student | MERN Stack Developer</p>
+        <div className="footer-social-icons">
+          <a href="https://www.linkedin.com/in/prithika-sri-672b58292/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/prithikavasan" target="_blank" rel="noreferrer">
+          <a href="https://github.com/prithikavasan" target="_blank" rel="noreferrer" aria-label="GitHub">
             <FaGithub />
           </a>
-          <a href="mailto:prithikavasan512@gmail.com">
+          <a href="mailto:prithikavasan512@gmail.com" aria-label="Email">
             <FaEnvelope />
           </a>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>© 2025 Prithika Vasan. All rights reserved.</p>
+        <p>© 2026 Prithika Sri S. All rights reserved.</p>
       </div>
     </footer>
   );
