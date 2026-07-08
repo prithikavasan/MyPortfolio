@@ -11,22 +11,49 @@ const Contact = () => {
     message: ""
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Simulate API submission
     if (formData.name && formData.email && formData.message) {
-      setFormSubmitted(true);
-      // Reset form after a brief delay
-      setTimeout(() => {
-        setFormData({ name: "", email: "", subject: "", message: "" });
-        setFormSubmitted(false);
-      }, 5000);
+      setIsSubmitting(true);
+      setSubmitError("");
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/prithikavasan512@gmail.com", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message
+          })
+        });
+
+        if (response.ok) {
+          setFormSubmitted(true);
+          // Reset form after a brief delay
+          setTimeout(() => {
+            setFormData({ name: "", email: "", subject: "", message: "" });
+            setFormSubmitted(false);
+          }, 5000);
+        } else {
+          setSubmitError("Something went wrong. Please try again or contact me directly via email.");
+        }
+      } catch (error) {
+        setSubmitError("Failed to send message. Please check your network connection and try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -182,10 +209,11 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
-                <button type="submit" className="form-submit-btn">
-                  <span>Send Message</span>
-                  <FaPaperPlane className="submit-icon" />
+                <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
+                  <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                  <FaPaperPlane className={`submit-icon ${isSubmitting ? "sending" : ""}`} />
                 </button>
+                {submitError && <p className="form-error-text">{submitError}</p>}
               </form>
             )}
           </div>
